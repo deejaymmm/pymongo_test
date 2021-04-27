@@ -12,14 +12,12 @@ db = client['pymongo_test']  # запускаем mongod.exe и работаем
 collection = db['docs']  # работаем с коллекцией 'docs'
 
 
-# @app.route('/')  # функция-декоратор отслеживания главной страницы по URL-адресу ('/')
-# @app.route('/home')  # обработка двух URL-адресов
-# def index():
-#     return render_template("index.html")  # вывод шаблона на экран
-
-
 @app.route('/')  # функция-декоратор отслеживания главной страницы по URL-адресу ('/')
 @app.route('/home')  # обработка двух URL-адресов
+def index():
+    return render_template("index.html")  # вывод шаблона на экран
+
+
 @app.route('/docs')  # все документы на сайте
 def docs():
     results = collection.find()  # создаем объект, кот. обращается к коллекции
